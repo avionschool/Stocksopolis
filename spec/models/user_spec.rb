@@ -8,13 +8,13 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid 	
       expect(user.errors).to be_present
       expect(user.errors.to_h.keys).to include(:name)
-		end
+    end
     it "2. is not valid without role id" do
       user = User.new
       user.save
       expect(user).to_not be_valid 	
       expect(user.errors).to be_present
       expect(user.errors.to_h.keys).to include(:role_id)
-		end
+    end
   end
 end
