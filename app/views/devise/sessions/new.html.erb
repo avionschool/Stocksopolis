@@ -1,7 +1,7 @@
 <h2>Log in as</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<%# <%= f.select :role_id, options_for_select(Role.all.map{|r| [r.role_name, r.id]})%> %>
+<%# <%= f.select :role_id, options_for_select(Role.all.map{|r| [r.role_name, r.id]})%>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
