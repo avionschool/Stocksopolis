@@ -1,20 +1,29 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  context "Validation" do
-    it "1. is not valid without name" do
-      user = User.new
-      user.save
-      expect(user).to_not be_valid 	
-      expect(user.errors).to be_present
-      expect(user.errors.to_h.keys).to include(:name)
-    end
-    it "2. is not valid without role id" do
-      user = User.new
-      user.save
-      expect(user).to_not be_valid 	
-      expect(user.errors).to be_present
-      expect(user.errors.to_h.keys).to include(:role_id)
-    end
+  subject{
+    described_class.new(name: "Anna", role_id: 1, email: "anna123@gmail.com", password: "some_password")
+  }
+
+  it "1. is not valid without name" do
+    subject.name = nil
+    expect(subject).to_not be_valid
   end
+
+  it "2. is not valid without email" do
+    subject.email = nil
+    expect(subject).to_not be_valid
+  end
+
+  it "is not valid without a password" do
+    subject.password = nil
+    expect(subject).to_not be_valid
+  end
+
+  it "is not valid without role id" do
+    subject.role_id = nil
+    expect(subject).to_not be_valid
+  end
+
+  
 end
