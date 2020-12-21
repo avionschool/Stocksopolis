@@ -1,0 +1,12 @@
+<h1>Create Role</h1>
+
+<%= form_with model: @role do |form| %>
+  <div>
+    <%= form.label :Role %><br>
+    <%= form.text_field :role_name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

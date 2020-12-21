@@ -1,0 +1,15 @@
+<h1>All Roles</h1>
+
+<table>
+ <thead>
+    <tr>
+      <th>Role Name</th>
+    </tr>
+  </thead>
+
+ <% @roles.each do |r| %>
+    <tr>
+      <td><h4><%=  r.role_name %></h4></td>
+    </tr>
+    <% end %>
+</table>
