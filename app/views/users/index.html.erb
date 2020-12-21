@@ -1,1 +1,2 @@
-<h1>welcome</h1> <%=current_user.name%> - <%=Role.find(current_user.role_id).role_name%>
+<%= render "banner" %><br>
+<h1>welcome</h1> <%=current_user.name%> - <%=@role_name%>
