@@ -1,2 +1,48 @@
 <%= render "banner" %><br>
-<h1>welcome</h1> <%=current_user.name%> - <%=@role_name%>
+<h1>welcome</h1> <%=current_user.name%>  <%if current_user.role_id === 1 %>
+  <h3>Admin</h3>
+  <%else%>
+  <%=@role_name%>
+<%end%>
+<div class="portfolio-container">
+    <div class="portfolio-table">
+        <div class="header-container">
+            <h1 class="header__text">Market Summary</h1>
+        </div>
+            <table class="table" id="table"
+                                 data-toggle="table"
+                                 data-height="500"
+                                 data-custom-sort="customSort">
+            <thead>
+                <tr>
+                    <th scope="col"> Symbol</th>
+                    <th scope="col" >Company Name</th>
+                    <th scope="col"  data-field="change" data-sortable="true">Change</th>
+                    <th scope="col"  data-field="open" data-sortable="true">Open</th>
+                    <th scope="col"  data-field="high" data-sortable="true">High</th>
+                    <th scope="col"  data-field="low" data-sortable="true">Low</th>
+                    <th scope="col"  data-field="Previous Close" data-sortable="true">Previous Close</th>
+                    <th scope="col"  data-field="volume" data-sortable="true">Volume</th>
+                    <th scope="col"  data-field="Current Value" data-sortable="true">Current Value</th>
+                </tr>
+            </thead>
+            <tbody>
+             <% @most_active.each do |key, value|%>
+                <tr>
+                    <td ><%= key["symbol"] %></td> 
+                    <td ><%= key["companyName"]%></td> 
+                    <td ><%= number_to_percentage(key["changePercent"], precision: 2)%></td> 
+                    <td ><%= key["open"]%></td> 
+                    <td ><%= key["high"]%></td> 
+                    <td ><%= key["low"] %></td> 
+                    <td ><%= number_to_currency(key["volume"], precision: 2)%></td> 
+                    <td ><%= number_to_currency(key["previousClose"], precision: 2)%></td> 
+                    <td ><%= number_to_currency(key["latestPrice"], precision: 2)%></td>  
+                </tr>
+            <% end %>
+            </tbody>
+            </table>
+
+    </div>
+    
+</div>
