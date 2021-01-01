@@ -13,3 +13,83 @@
  *= require_tree .
  *= require_self
  */
+:root{
+    --colorPrimary: #23120b;
+    --colorSecondary: #f1f1f1;
+    --colorLogo: #21209c;
+}
+
+.nav-item,
+.navbar-link {
+    color: var(--colorPrimary);
+    font-size: 1rem;
+    padding: 0;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--colorPrimary);
+}
+
+.navbar div.logo a{
+    font-weight: 100;
+    font-size: 2rem;
+    color: var(--colorLogo);
+}
+.navbar div.logo a span {
+    text-decoration: none;
+    color: var(--colorLogo);
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.navbar div.logo a:hover{
+    text-decoration: none;
+}
+
+
+.navbar div.dropdown .navbar-link:hover{
+  text-decoration: none;
+  color:var(--colorPrimary);
+}
+
+.dropdown-menu {
+  min-width:6rem !important;
+}
+
+.body, .search-bar{
+    margin: 1%;
+}
+.search-bar{
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.text{
+    text-align: center;
+}
+.avatar {
+    max-height:30px;
+    border-radius: 15px;
+    width:auto;
+    vertical-align:middle;
+
+  }
+
+.input-code{
+    max-width: 15em;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+    outline: 0;
+}
+
+.input-code:focus{
+    -webkit-box-shadow: none;
+box-shadow: none;
+background: transparent;
+}

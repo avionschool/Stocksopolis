@@ -2,7 +2,9 @@ Rails.application.routes.draw do
  
   devise_for :users
   resources :roles
-  get 'user/index'
+  resources :stocks
+
   root 'users#index'
- 
+
+  get '/search' => 'users#search', :as => 'search_page'
 end
