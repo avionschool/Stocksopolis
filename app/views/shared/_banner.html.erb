@@ -30,12 +30,13 @@
 </nav>
 
 <div class="body">
-  <div class="text">
-  <h1>Welcome,</h1> <%=current_user.name%>  <%if current_user.role_id === 1 %>
 
-      <span>- My Role: Admin</span>
+  <div class="text">
+  
+  <h1>Welcome!</h1> <%if current_user.role_id === 3 %>
+      <span>Role: Admin</span>
       <%else%>
-      <span>My Role: <%=@role_name%> </span>
+      <span>Role: <%=@role_name%> </span>
     <%end%>
     </div>
 </div>

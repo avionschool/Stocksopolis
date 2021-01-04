@@ -1,12 +1,21 @@
 <%= render "shared/banner" %><br>
+<div class = 'center'>
+<h6>Balance: <%= number_to_currency(@user.balance, precision:2) %></h6>
+
+</div>
+
 <div class="search-bar">
 <%= form_tag(search_page_path, :method => "get",   
     class: 'navbar-form navbar-left') do %>  
   <div class="input-group">  
     <%= search_field_tag :search, params[:search], placeholder: "Type code here.", class: "form-control input-code" %>  
+    
     <div class="input-group-btn">  
       <%= button_tag "Search", :class => 'btn btn-light',:name => nil%> <i class="fas fa-search-dollar dollar"></i> 
     </div>  
+    
   </div>  
 <% end %>
+<%# <%=link_to 'Go to buy page', buy_page_path %> 
 </div>
+

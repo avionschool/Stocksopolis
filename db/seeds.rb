@@ -12,7 +12,7 @@ end
 
 
 admin_user = User.new({ name: "Admin User", email: 'admin@rubyonrails.com',
-    password: 'password123', password_confirmation: 'password123', role_id: 1})
+    password: 'password123', password_confirmation: 'password123', role_id: 3})
 
     if admin_user.valid?
         admin_user.save()
@@ -24,3 +24,6 @@ admin_user = User.new({ name: "Admin User", email: 'admin@rubyonrails.com',
       else
         puts "****NOT VALID****"
       end
+
+
+      

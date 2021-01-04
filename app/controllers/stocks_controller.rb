@@ -9,6 +9,8 @@ class StocksController < ApplicationController
     end
 
 
+
+    private
     def load_api
         @client = IEX::Api::Client.new(
             publishable_token: ENV['SAND_BOX_KEY'],

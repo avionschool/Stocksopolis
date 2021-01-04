@@ -7,7 +7,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :role
-  has_many :stocks
+  has_many :transactions
+  has_many :stocks, through: :transactions
 
-  
+
+  def calc_total_balance(amount)
+    self.balance = self.balance - amount
+    self.save
+end       
 end

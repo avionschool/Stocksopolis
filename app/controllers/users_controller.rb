@@ -5,18 +5,24 @@ class UsersController < ApplicationController
     require 'net/http'
 
     def index
+        @user = current_user
         @roles = Role.all
         @role_name = current_user.role.role_name
+        
        
     end
 
-
     def search
+        @user = current_user
         if params[:search].blank?  
             redirect_to(root_path, alert: "Empty field!") and return   
     else  
         @parameter = params[:search].upcase  
         @quote = @client.quote(@parameter).latest_price
+        @company = @client.company(@parameter).company_name
+        @ceo =  @client.company(@parameter).ceo
+        @symbols = @client.ref_data_symbols()
+
       end  
     end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_01_161542) do
+ActiveRecord::Schema.define(version: 2021_01_04_100515) do
 
   create_table "roles", force: :cascade do |t|
     t.string "role_name"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2021_01_01_161542) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.decimal "price"
+    t.string "stock_code"
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.integer "role_id"
@@ -35,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_01_01_161542) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "balance", default: "1000000.0"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
