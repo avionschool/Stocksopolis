@@ -8,7 +8,7 @@ class StocksController < ApplicationController
         @most_active = JSON.parse(@request_api)
     end
 
-
+    
 
     private
     def load_api

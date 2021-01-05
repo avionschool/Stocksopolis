@@ -8,11 +8,12 @@
 role_list = ["Admin","Buyer","Broker"]
 role_list.each do |role_name|
     Role.create(role_name: role_name)
+    
 end
 
 
 admin_user = User.new({ name: "Admin User", email: 'admin@rubyonrails.com',
-    password: 'password123', password_confirmation: 'password123', role_id: 3})
+    password: 'password123', password_confirmation: 'password123', role_id: 1})
 
     if admin_user.valid?
         admin_user.save()

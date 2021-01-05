@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   
   root 'users#index'
-  post '/users/:user_id/transaction'=> 'transaction#create',  as: 'user_create'
+
   get '/buy' => 'transactions#buy', :as => 'buy_page'
   get '/search' => 'users#search', :as => 'search_page'
 end
