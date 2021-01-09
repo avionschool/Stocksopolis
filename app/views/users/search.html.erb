@@ -25,10 +25,10 @@
 
 <h1 class="text-muted">Buy Stock</h1>
     <%=form.label :stock_code%> : <br>
-    <%=form.text_field :stock_code,  value:   @parameter, class: "form-control" %>
+    <%=form.text_field :stock_code,  value:   @parameter, readonly:true, class: "form-control" %>
 
     <%=form.label :price%> :<br>
-    <%=form.text_field :price, value: @quote, class: "form-control" %><br>
+    <%=form.text_field :price, value: @quote,readonly:true, class: "form-control" %><br>
 
      <%=form.label :quantity%> :<br>
     <%=form.text_field :quantity, class: "form-control" %><br>

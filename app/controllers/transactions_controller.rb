@@ -14,7 +14,7 @@ class TransactionsController < ApplicationController
         @transaction.user_id = @user.id
         # byebug
         @transaction.save
-     
+        redirect_to root_path
     end 
 
  

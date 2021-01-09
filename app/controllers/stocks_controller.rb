@@ -1,6 +1,10 @@
 class StocksController < ApplicationController
     before_action :authenticate_user!
     before_action :load_api
+
+    def index
+        @role_name = current_user.role.role_name
+    end
     
     def show
         uri = URI('https://cloud.iexapis.com/stable/stock/market/list/mostactive?token=pk_78fe637629224f02af0d9b556b31dc04&listLimit=100')

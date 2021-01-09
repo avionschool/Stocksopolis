@@ -12,14 +12,7 @@ class UsersController < ApplicationController
        
     end
 
-    def create
-        @user = current_user
-        @transaction = Transaction.new(transaction_params)
-        @transaction.user_id = @user.id
-        # byebug
-        @transaction.save
-     
-    end 
+
 
     def search
         @user = current_user
