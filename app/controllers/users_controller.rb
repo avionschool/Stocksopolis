@@ -12,6 +12,15 @@ class UsersController < ApplicationController
        
     end
 
+    def create
+        @user = current_user
+        @transaction = Transaction.new(transaction_params)
+        @transaction.user_id = @user.id
+        # byebug
+        @transaction.save
+     
+    end 
+
     def search
         @user = current_user
         if params[:search].blank?  
@@ -21,8 +30,7 @@ class UsersController < ApplicationController
         @quote = @client.quote(@parameter).latest_price
         @company = @client.company(@parameter).company_name
         @ceo =  @client.company(@parameter).ceo
-        @symbols = @client.ref_data_symbols()
-
+    
       end  
     end
 
@@ -35,7 +43,7 @@ class UsersController < ApplicationController
             )
     end
 
-
+   
 end
 
 

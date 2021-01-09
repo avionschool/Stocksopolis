@@ -1,0 +1,19 @@
+
+<%= form_with model: [@user, @transaction],:url => {:controller => 'transaction', :action => 'create'}, local: true do |form| %>
+
+<h1 class="text-muted">Buy Stock</h1>
+    <%=form.label :stock_code%> : <br>
+    <%=form.text_field :stock_code,  value:   @parameter, class: "form-control" %>
+
+    <%=form.label :price%> :<br>
+    <%=form.text_field :price, value: @quote, class: "form-control" %><br>
+
+     <%=form.label :quantity%> :<br>
+    <%=form.text_field :quantity, class: "form-control" %><br>
+
+   
+    </div>
+   <div class="col text-center">
+        <%= form.submit :Buy, class: "btn btn-success"%>
+    </div>
+<%end%>

@@ -2,19 +2,20 @@ class TransactionsController < ApplicationController
     before_action :authenticate_user!
     before_action :load_api
 
+    def new
+        @transaction = Transaction.new
+        
+    end
+ 
+
     def create
         @user = current_user
-        stock_price = @client.quote(params[:transaction][:stock_attributes][:symbol]).latest_price
-        total_price = stock_price * params[:transaction][:quantity].to_i
-
-        if current_user.balance > total_price
-            @transaction = Transaction.create(transaction_params)
-            @transaction.purchase_price = total_price
-            @transaction.purchase_date = DateTime.now
-            @transaction.save
-            @user.calc_total_balance(total_price)
+        @transaction = Transaction.new(transaction_params)
+        @transaction.user_id = @user.id
+        # byebug
+        @transaction.save
+     
     end 
-
 
  
 
@@ -30,8 +31,6 @@ class TransactionsController < ApplicationController
     
     
     def transaction_params
-
-        params.require(:transaction).permit(:user_id, :quantity, :stock_id,
-        :stock_attributes => [:symbol])
+        params.permit(:user_id, :quantity, :stock_code, :price)
     end
 end
