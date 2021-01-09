@@ -3,7 +3,11 @@ class StocksController < ApplicationController
     before_action :load_api
 
     def index
+        @user = current_user.id
         @role_name = current_user.role.role_name
+        @transaction = Transaction.all
+        @stock = @transaction.select([:stock_code,:price]).group(:stock_code,:price).having("count(stock_code)>= 1").all.size
+        # byebug
     end
     
     def show
