@@ -14,9 +14,22 @@ class TransactionsController < ApplicationController
         @transaction.user_id = @user.id
         # byebug
         @transaction.save
+      
 
-        @stock_db = Stock.new(symbol:@transaction.stock_code, price: @transaction.price, stock_quantity: @transaction.quantity, user_id:@transaction.user_id)
-        @stock_db.save
+        if Stock.exists?(symbol: @transaction.stock_code) 
+            @quantity = Stock.where(symbol: @transaction.stock_code)[0].stock_quantity
+            @total = @quantity + @transaction.quantity
+            @stock = Stock.where(symbol: @transaction.stock_code)[0]
+            @stock.stock_quantity = @total
+            @stock.save
+            redirect_to(stocks_path)  and return
+        else
+            @stock_db = Stock.new(symbol:@transaction.stock_code, price: @transaction.price, stock_quantity: @transaction.quantity, user_id:@transaction.user_id)
+            @stock_db.save
+        end
+       
+
+
         redirect_to root_path
     end 
 
@@ -36,4 +49,4 @@ class TransactionsController < ApplicationController
     def transaction_params
         params.permit(:user_id, :quantity, :stock_code, :price)
     end
-end
+end   

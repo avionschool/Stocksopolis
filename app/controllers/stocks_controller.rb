@@ -7,14 +7,10 @@ class StocksController < ApplicationController
         @role_name = current_user.role.role_name
         @stocks = Stock.all
         @client_index = @client
-        
-        # @stock_code = @transaction.all.where(stock_code: "MSFT").pluck(:stock_code)
-        # @stock = @transaction.select([:stock_code]).group_by(:stock_code,:price).having("count(stock_code)>= 1").all.size
-        # @transaction.where(stock_code:@stock.keys).pluck(:quantity)
-        # byebug
+
     end
 
-    
+
     
     def show
         uri = URI('https://cloud.iexapis.com/stable/stock/market/list/mostactive?token=pk_78fe637629224f02af0d9b556b31dc04&listLimit=100')
