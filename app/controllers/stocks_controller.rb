@@ -13,6 +13,8 @@ class StocksController < ApplicationController
         # @transaction.where(stock_code:@stock.keys).pluck(:quantity)
         # byebug
     end
+
+    
     
     def show
         uri = URI('https://cloud.iexapis.com/stable/stock/market/list/mostactive?token=pk_78fe637629224f02af0d9b556b31dc04&listLimit=100')

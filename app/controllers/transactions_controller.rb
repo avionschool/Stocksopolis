@@ -14,6 +14,9 @@ class TransactionsController < ApplicationController
         @transaction.user_id = @user.id
         # byebug
         @transaction.save
+
+        @stock_db = Stock.new(symbol:@transaction.stock_code, price: @transaction.price, stock_quantity: @transaction.quantity, user_id:@transaction.user_id)
+        @stock_db.save
         redirect_to root_path
     end 
 
