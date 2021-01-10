@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_04_085515) do
+ActiveRecord::Schema.define(version: 2021_01_10_035407) do
 
   create_table "roles", force: :cascade do |t|
     t.string "role_name"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2021_01_04_085515) do
     t.decimal "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "stock_quantity"
+    t.integer "user_id"
   end
 
   create_table "transactions", force: :cascade do |t|

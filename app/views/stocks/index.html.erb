@@ -10,13 +10,15 @@
                 </tr>
             </thead>
             <tbody>
-            <% @stock.keys.each do |stock|%>
+           <% @stocks.each do |stock|%>
+
                 <tr>
-                <td><%=stock[0]%></td> 
-                <td><%= @stock[stock]%></td>
-                <td><%=stock[1]%></td>
-                <td><%=stock[1]*@stock[stock]%></td>
+                <td><%=stock.symbol%></td> 
+                <td><%=stock.stock_quantity%></td>
+                <td><%=@client_index.quote(stock.symbol).latest_price%></td>
+                <td><%=@client_index.quote(stock.symbol).latest_price*stock.stock_quantity%></td>
                 </tr>
+                
             <% end %>
             </tbody>
             </table>

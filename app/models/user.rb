@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   belongs_to :role
   has_many :transactions
-  has_many :stocks, through: :transactions
+  has_many :stocks
 
 
   def calc_total_balance(amount)
