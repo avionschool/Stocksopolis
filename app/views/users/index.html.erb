@@ -21,4 +21,24 @@
 <% end %>
 <%# <%=link_to 'Go to buy page', buy_page_path %> 
 </div>
-
+<% if @is_admin %>
+<h1>Users List</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Status</th>
+    <th>Toggle Status</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.role.role_name %></td>
+      <td><%= user.status %></td>
+      <td><%= link_to "Toggle", user_toggle_status_path(user.id), method: :patch %><td>
+    </tr>
+  <% end %>
+</table>
+<% end %>

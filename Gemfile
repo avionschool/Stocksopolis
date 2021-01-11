@@ -57,3 +57,4 @@ gem "devise"
 gem 'iex-ruby-client'
 gem 'simple_form'
 
+gem "figaro"
