@@ -265,8 +265,8 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise
-  iex-ruby-client
   figaro
+  iex-ruby-client
   jbuilder (~> 2.7)
   listen (~> 3.2)
   puma (~> 4.1)
