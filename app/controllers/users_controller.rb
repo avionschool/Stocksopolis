@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @user = current_user
+    @role_name = current_user.role.role_name
     if !@is_admin
       return
     end
@@ -51,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def check_admin
-    if current_user.role.role_name == "admin"
+    if current_user.role.role_name == "Admin"
       @is_admin = true
     else
       @is_admin = false

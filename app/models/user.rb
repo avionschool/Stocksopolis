@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   private
   def set_status
-    if self.role.role_name == "broker"
+    if self.role.role_name == "Broker"
       self.status = "pending"
     else
       self.status = "approved"
