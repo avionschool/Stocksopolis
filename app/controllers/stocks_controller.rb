@@ -7,13 +7,14 @@ class StocksController < ApplicationController
         @role_name = current_user.role.role_name
         @stocks = Stock.all
         @client_index = @client
+        
 
     end
 
 
     
     def show
-        uri = URI('https://cloud.iexapis.com/stable/stock/market/list/mostactive?token=pk_78fe637629224f02af0d9b556b31dc04&listLimit=100')
+        uri = URI('https://cloud.iexapis.com/stable/stock/market/list/mostactive?token=ENV["IEX_TOKEN"]&listLimit=100')
         @request_api = Net::HTTP.get(uri)
         @most_active = JSON.parse(@request_api)
     end
