@@ -55,6 +55,6 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "rspec-rails", "~> 4.0", ">= 4.0.1"
 gem "devise"
 gem 'iex-ruby-client'
-gem 'simple_form'
+
 
 gem "figaro"
