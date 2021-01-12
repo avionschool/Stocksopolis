@@ -1,0 +1,28 @@
+<%= render "shared/banner" %><br>
+
+<h1 class="text-muted">Transactions</h1>
+
+<table class="table">
+  <thead>
+      <tr >
+      <th scope="col">Date</th>
+      <th scope="col">Ticker Symbol</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Total Cost</th>
+      </tr>
+  </thead>
+  <tbody>
+  <% @transactions.each do |transaction|%>
+
+      <tr>
+      <td><%=transaction.created_at%></td> 
+      <td><%=transaction.stock_code%></td>
+      <td><%=transaction.quantity%></td>
+      <td><%=transaction.price%></td>
+      <td><%=transaction.quantity*transaction.price%></td>
+      </tr>
+      
+  <% end %>
+  </tbody>
+</table>

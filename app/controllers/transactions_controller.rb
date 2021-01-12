@@ -2,6 +2,14 @@ class TransactionsController < ApplicationController
     before_action :authenticate_user!
     before_action :load_api
 
+    def index
+        if current_user.role.role_name === "Admin"
+            @transactions = Transaction.all
+        else
+            @transactions = Transaction.where(user_id: current_user.id)
+        end
+    end
+
     def new
         @transaction = Transaction.new
         

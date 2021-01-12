@@ -17,4 +17,6 @@ Rails.application.routes.draw do
 
   get '/search' => 'users#search', :as => 'search_page'
   post '/search' => 'transactions#create'
+
+  get '/transactions' => 'transactions#index', :as => 'transactions'
 end
