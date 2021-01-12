@@ -5,7 +5,7 @@ class StocksController < ApplicationController
     def index
         @user = current_user.id
         @role_name = current_user.role.role_name
-        @stocks = Stock.all
+        @stocks = Stock.where(user_id: current_user.id)
         @client_index = @client
         
 
