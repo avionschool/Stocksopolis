@@ -13,14 +13,14 @@
             </thead>
             <tbody>
            <% @stocks.each do |stock|%>
-
+                <%if @user_stock%>
                 <tr>
                 <td><%=stock.symbol%></td> 
                 <td><%=stock.stock_quantity%></td>
                 <td><%=@client_index.quote(stock.symbol).latest_price%></td>
                 <td><%=@client_index.quote(stock.symbol).latest_price*stock.stock_quantity%></td>
                 </tr>
-                
+                <% end %>
             <% end %>
             </tbody>
             </table>

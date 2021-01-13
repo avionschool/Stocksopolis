@@ -36,8 +36,6 @@ class TransactionsController < ApplicationController
             @stock_db.save
         end
        
-
-
         redirect_to root_path
     end 
 

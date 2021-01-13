@@ -6,6 +6,7 @@ class StocksController < ApplicationController
         @user = current_user.id
         @role_name = current_user.role.role_name
         @stocks = Stock.where(user_id: current_user.id)
+        @user_stock = Stock.where(user_id: @user).exists?
         @client_index = @client
         
 
