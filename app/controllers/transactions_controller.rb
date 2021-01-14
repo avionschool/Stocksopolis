@@ -3,44 +3,53 @@ class TransactionsController < ApplicationController
     before_action :load_api
 
     def index
+        # @users = User.where(name: )
+        # byebug
+        @role_name = current_user.role.role_name
+       
         if current_user.role.role_name === "Admin"
             @transactions = Transaction.all
         else
-            @transactions = Transaction.where(user_id: current_user.id)
+            @user_transaction = Transaction.where(user_id: current_user.id)
         end
     end
 
     def new
-        @transaction = Transaction.new
+        @transaction = Transaction.new 
         
     end
  
 
     def create
         @user = current_user
+        
         @transaction = Transaction.new(transaction_params)
         @transaction.user_id = @user.id
         # byebug
         @transaction.save
-      
-
-        if Stock.exists?(symbol: @transaction.stock_code) 
-            @quantity = Stock.where(symbol: @transaction.stock_code)[0].stock_quantity
+        
+        if Stock.where(user_id: current_user.id).exists?(symbol: @transaction.stock_code) 
+            @quantity = Stock.where(user_id: current_user.id).where(symbol: @transaction.stock_code)[0].stock_quantity
             @total = @quantity + @transaction.quantity
-            @stock = Stock.where(symbol: @transaction.stock_code)[0]
+            @stock = Stock.where(user_id: current_user.id).where(symbol: @transaction.stock_code)[0]
             @stock.stock_quantity = @total
             @stock.save
-            redirect_to(stocks_path)  and return
+          
+            # byebug
+        #     redirect_to(stocks_path)  and return
+
         else
-            @stock_db = Stock.new(symbol:@transaction.stock_code, price: @transaction.price, stock_quantity: @transaction.quantity, user_id:@transaction.user_id)
-            @stock_db.save
+          
+        @stock_db = Stock.new(symbol:@transaction.stock_code, price: @transaction.price, stock_quantity: @transaction.quantity, user_id:@transaction.user_id)
+        @stock_db.save
+        # byebug
         end
-       
-        redirect_to root_path
+        
+        # redirect_to root_path
+        redirect_to(stocks_path)
     end 
 
  
-
     private
     def load_api
         @client = IEX::Api::Client.new(

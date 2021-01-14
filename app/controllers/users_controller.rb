@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   def index
     @user = current_user
     @role_name = current_user.role.role_name
+    @user_stock = Stock.where(user_id: 3)
+
     if !@is_admin
       return
     end
@@ -30,6 +32,8 @@ class UsersController < ApplicationController
   end
 
   def search
+    @role_name = current_user.role.role_name
+
     @user = current_user
     if params[:search].blank?  
         redirect_to(root_path, alert: "Empty field!") and return   
