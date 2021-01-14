@@ -40,4 +40,3 @@ class StocksController < ApplicationController
 
 end
 
-

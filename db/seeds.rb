@@ -25,6 +25,4 @@ admin_user = User.new({ name: "Admin User", email: 'admin@rubyonrails.com',
       else
         puts "****NOT VALID****"
       end
-
-
-      
+     
