@@ -33,14 +33,7 @@ class TransactionsController < ApplicationController
             @stock = UserStock.where(user_id: current_user.id).where(symbol: @transaction.stock_code)[0]
             @stock.stock_quantity = @total
 
-           
-            @transactions = Transaction.all
-            @transactions.each do |total|
-                @total_price = @client.quote(total.stock_code).latest_price*total.quantity
-            end
-            
-           byebug
-            @user.calc_total_balance(@total_price)
+            @user.calc_total_balance(@transaction.quantity*@stock.price)
             @stock.save
             
 
@@ -49,9 +42,10 @@ class TransactionsController < ApplicationController
 
         else
           
-        @stock_db = UserStock.new(symbol:@transaction.stock_code, price: @transaction.price, stock_quantity: @transaction.quantity, user_id:@transaction.user_id)
-        @stock_db.save
-        # byebug
+            @stock_db = UserStock.new(symbol:@transaction.stock_code, price: @transaction.price, stock_quantity: @transaction.quantity, user_id:@transaction.user_id)
+            @stock_db.save
+            @user.calc_total_balance(@transaction.quantity*@stock_db.price)
+            # byebug
         end
         
         # redirect_to root_path

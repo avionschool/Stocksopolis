@@ -18,8 +18,7 @@ class UserStocksController < ApplicationController
         # @client.quote(stock.symbol).latest_price*stock.stock_quantity
         # byebug
 
-        
-            @client_index.quote(total.symbol).latest_price*total.stock_quantity
+
         
     end
 
