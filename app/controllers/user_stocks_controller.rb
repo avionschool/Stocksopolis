@@ -18,9 +18,9 @@ class UserStocksController < ApplicationController
         # @client.quote(stock.symbol).latest_price*stock.stock_quantity
         # byebug
 
-        @total_price = @stocks.each do |total|
+        
             @client_index.quote(total.symbol).latest_price*total.stock_quantity
-        end
+        
     end
 
 
