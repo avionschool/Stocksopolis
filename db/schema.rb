@@ -10,21 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_10_035407) do
+ActiveRecord::Schema.define(version: 2021_01_14_124125) do
 
   create_table "roles", force: :cascade do |t|
     t.string "role_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-  end
-
-  create_table "stocks", force: :cascade do |t|
-    t.string "symbol"
-    t.decimal "price"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "stock_quantity"
     t.integer "user_id"
   end
 
@@ -34,6 +25,15 @@ ActiveRecord::Schema.define(version: 2021_01_10_035407) do
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+  end
+
+  create_table "user_stocks", force: :cascade do |t|
+    t.string "symbol"
+    t.decimal "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "stock_quantity"
     t.integer "user_id"
   end
 

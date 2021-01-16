@@ -10,12 +10,12 @@
     <div class="navbar-nav ">
      <% if current_user.id === 1 %>
             <%=  link_to "Transactions", transactions_path, class: "nav-item nav-link"  %>            
-            <%=  link_to "Market", stock_path(current_user.id), class: "nav-item nav-link"  %>
+            <%=  link_to "Market", user_stock_path(current_user.id), class: "nav-item nav-link"  %>
 
         <% else %>
-            <%=  link_to "Portfolio", stocks_path(current_user.id), class: "nav-item nav-link"  %>   
+            <%=  link_to "Portfolio", user_stocks_path(current_user.id), class: "nav-item nav-link"  %>   
             <%=  link_to "Transactions", transactions_path, class: "nav-item nav-link"  %>            
-            <%=  link_to "Market", stock_path(current_user.id), class: "nav-item nav-link"  %>      
+            <%=  link_to "Market", user_stock_path(current_user.id), class: "nav-item nav-link"  %>      
      <% end %>
                
         <% if current_user %>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
  
   devise_for :users
   resources :roles
-  resources :stocks
+  resources :user_stocks
   resources :users do
     resources :transactions
   end

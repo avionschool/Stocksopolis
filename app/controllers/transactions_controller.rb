@@ -22,31 +22,40 @@ class TransactionsController < ApplicationController
 
     def create
         @user = current_user
-        
         @transaction = Transaction.new(transaction_params)
         @transaction.user_id = @user.id
         # byebug
         @transaction.save
         
-        if Stock.where(user_id: current_user.id).exists?(symbol: @transaction.stock_code) 
-            @quantity = Stock.where(user_id: current_user.id).where(symbol: @transaction.stock_code)[0].stock_quantity
+        if UserStock.where(user_id: current_user.id).exists?(symbol: @transaction.stock_code) 
+            @quantity = UserStock.where(user_id: current_user.id).where(symbol: @transaction.stock_code)[0].stock_quantity
             @total = @quantity + @transaction.quantity
-            @stock = Stock.where(user_id: current_user.id).where(symbol: @transaction.stock_code)[0]
+            @stock = UserStock.where(user_id: current_user.id).where(symbol: @transaction.stock_code)[0]
             @stock.stock_quantity = @total
+
+           
+            @transactions = Transaction.all
+            @transactions.each do |total|
+                @total_price = @client.quote(total.stock_code).latest_price*total.quantity
+            end
+            
+           byebug
+            @user.calc_total_balance(@total_price)
             @stock.save
-          
-            # byebug
+            
+
+           
         #     redirect_to(stocks_path)  and return
 
         else
           
-        @stock_db = Stock.new(symbol:@transaction.stock_code, price: @transaction.price, stock_quantity: @transaction.quantity, user_id:@transaction.user_id)
+        @stock_db = UserStock.new(symbol:@transaction.stock_code, price: @transaction.price, stock_quantity: @transaction.quantity, user_id:@transaction.user_id)
         @stock_db.save
         # byebug
         end
         
         # redirect_to root_path
-        redirect_to(stocks_path)
+        redirect_to(user_stocks_path)
     end 
 
  

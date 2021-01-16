@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def index
     @user = current_user
     @role_name = current_user.role.role_name
-    @user_stock = Stock.where(user_id: 3)
+    @user_stock = UserStock.where(user_id: 3)
 
     if !@is_admin
       return

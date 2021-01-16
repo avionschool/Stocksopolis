@@ -1,4 +1,4 @@
-class Stock < ApplicationRecord
+class UserStock < ApplicationRecord
     belongs_to :users, optional: true
   
 end

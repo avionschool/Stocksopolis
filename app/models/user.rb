@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   belongs_to :role
   has_many :transactions
-  has_many :stocks
+  has_many :user_stocks
 
   before_create :set_status
   after_create :send_new_user_email
