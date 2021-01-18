@@ -1,5 +1,18 @@
 <h2>Log in as</h2>
+<% flash.each do |name, msg| %>
 
+ 
+  <% if msg.class == Array %>
+    <% msg.each do |message| %>
+      <%= content_tag :div, message, :id => "flash_#{name}" %>
+    <% end %>
+  <% else %>
+
+  
+    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+
+  <% end %> 
+<% end %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <%# <%= f.select :role_id, options_for_select(Role.all.map{|r| [r.role_name, r.id]})%>
   <div class="field">

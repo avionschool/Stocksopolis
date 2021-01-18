@@ -7,13 +7,21 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :role
+  has_many :transactions
+  has_many :user_stocks
 
   before_create :set_status
   after_create :send_new_user_email
+  
+  def calc_total_balance(amount)
+    self.balance = self.balance - amount
+    self.save
+  end       
+  
 
   private
   def set_status
-    if self.role.role_name == "broker"
+    if self.role.role_name == "Broker"
       self.status = "pending"
     else
       self.status = "approved"
